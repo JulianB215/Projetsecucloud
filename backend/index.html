@@ -1,20 +1,71 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Authentification Edge</title>
+    <title>Pledge | Stream Beyond</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; }
-        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #333; }
-        .group { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
-        button { background-color: #007bff; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px; margin-right: 10px; }
-        button:hover { background-color: #0056b3; }
-        .output { background: #222; color: #0f0; padding: 10px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; min-height: 50px; }
-        input { padding: 8px; margin-right: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .group {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .output {
+            background: #222;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            min-height: 50px;
+        }
+
+        input {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Testeur d'API (Backend)</h1>
@@ -80,7 +131,7 @@
             });
             const data = await res.json();
             log(data);
-            if(res.ok) alert("Connecté ! Les cookies ont été reçus (visibles dans l'onglet Application du navigateur).");
+            if (res.ok) alert("Connecté ! Les cookies ont été reçus (visibles dans l'onglet Application du navigateur).");
         }
 
         async function testStream() {
@@ -96,4 +147,5 @@
         }
     </script>
 </body>
+
 </html>

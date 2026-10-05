@@ -1,18 +1,25 @@
+from pathlib import Path
+
 from fastapi import FastAPI, Depends, HTTPException, status, Response, Request
 from sqlalchemy.orm import Session
 from fastapi.middleware.cors import CORSMiddleware
 import jwt
 
-# Importations de nos autres fichiers
-from models import get_db, User
-import schemas
-import security
+# Importations compatibles avec `uvicorn backend.main:app` et `uvicorn main:app`.
+try:
+    from .models import get_db, User
+    from . import schemas, security
+except ImportError:
+    from models import get_db, User
+    import schemas
+    import security
 
 app = FastAPI(title="Smart Home Edge API")
 
 # Configuration CORS pour autoriser le futur frontend React à communiquer avec l'API
 origins = [
     "http://localhost:5173", # Port par défaut de Vite (React)
+    "http://127.0.0.1:5173",
     "http://localhost:3000", # Port par défaut de Create React App
 ]
 
@@ -104,5 +111,5 @@ def get_stream_status(current_user: User = Depends(get_current_user)):
 
 @app.get("/")
 def read_root():
-    with open("index.html", "r", encoding="utf-8") as f:
+    with open(Path(__file__).with_name("index.html"), "r", encoding="utf-8") as f:
         return Response(content=f.read(), media_type="text/html")
